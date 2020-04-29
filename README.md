@@ -1,14 +1,14 @@
 # Project
 SISTEM INFORMASI TOUR TRAVEL
 
-### OLEH ###
+### Oleh ###
 1. Septianda Reza Maulana (1841720135)
 
 ### Objek Observasi ###
 1. Nama		: PT Traviora Global Wisata
 2. Alamat	: Banyuwangi
 
-### Progres ###
+### Progress ###
 (Jum'at, 7 Februari 2020)
 1. Upload base Codeigniter
 
