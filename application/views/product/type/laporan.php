@@ -42,6 +42,7 @@
                     <th>No</th>
                     <th>Type Id</th>
                     <th>Name</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@
                         <td><?= $no; ?></td>
                         <td><?= $ty->type_id; ?></td>
                         <td><?= $ty->name; ?></td>
+                        <td><?= $ty->status; ?></td>
                     </tr>
                     <?php $no++; ?>
                 <?php endforeach; ?>

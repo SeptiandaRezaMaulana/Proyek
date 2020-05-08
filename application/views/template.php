@@ -122,7 +122,8 @@
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
                             </button>
                         </span>
                     </div>
@@ -130,42 +131,67 @@
                 <!-- sidebar menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'dashboard' ||  $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>>
                         <a href="<?= site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
                     </li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'customer' ? 'class="active"' : ''; ?>>
                         <a href="<?= site_url('customer'); ?>"><i class="fa fa-user"></i><span>Customers</span></a>
                     </li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'supplier' ? 'class="active"' : ''; ?>>
                         <a href="<?= site_url('supplier'); ?>"><i class="fa fa-truck"></i><span>Suppliers</span></a>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview <?= $this->uri->segment(1) == 'category' ||
+                                            $this->uri->segment(1) == 'item' ||
+                                            $this->uri->segment(1) == 'unit' ||
+                                            $this->uri->segment(1) == 'type' ? 'active' : ''; ?>">
                         <a href="#">
                             <i class="fa fa-archive"></i> <span>Tour Products</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= site_url('unit'); ?>"><i class="fa fa-circle-o"></i> Units</a></li>
-                            <li><a href="<?= site_url('category'); ?>"><i class="fa fa-circle-o"></i> Categories</a></li>
-                            <li><a href="<?= site_url('type'); ?>"><i class="fa fa-circle-o"></i> Tour Type</a></li>
-                            <li><a href="<?= site_url('item'); ?>"><i class="fa fa-circle-o"></i> Items</a></li>
+                            <li <?= $this->uri->segment(1) == 'item' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('item'); ?>"><i class="fa fa-circle-o"></i> Items</a>
+                            </li>
+                            <li <?= $this->uri->segment(1) == 'category' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('category'); ?>"><i class="fa fa-circle-o"></i> Categories</a>
+                            </li>
+                            <li <?= $this->uri->segment(1) == 'type' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('type'); ?>"><i class="fa fa-circle-o"></i> Tour Type</a>
+                            </li>
+                            <li <?= $this->uri->segment(1) == 'unit' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('unit'); ?>"><i class="fa fa-circle-o"></i> Units</a>
+                            </li>
                         </ul>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview <?= $this->uri->segment(1) == 'sales' ||
+                                            $this->uri->segment(1) == 'stockin' ||
+                                            $this->uri->segment(1) == 'stockout' ? 'active' : ''; ?>">
                         <a href="#">
                             <i class="fa fa-money"></i> <span>Transaction</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Stock In</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Stock Out</a></li>
+                            <li <?= $this->uri->segment(1) == 'sales' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('sales'); ?>"><i class="fa fa-circle-o"></i> Sales</a>
+                            </li>
+                            <li <?= $this->uri->segment(1) == 'stockin' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('stockin'); ?>"><i class="fa fa-circle-o"></i> Stock In</a>
+                            </li>
+                            <li <?= $this->uri->segment(1) == 'stockout' ? 'class="active"' : ''; ?>>
+                                <a href="<?= site_url('stockout'); ?>"><i class="fa fa-circle-o"></i> Stock Out</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i> <span>Reports</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
@@ -175,7 +201,7 @@
                     <?php if ($this->fungsi->user_login()->level == 1) : ?>
                         <li class="header">SETTING</li>
                         <li><a href="<?= site_url('user'); ?>"><i class="fa fa-user"></i><span>User Aktif</span></a></li>
-                        <li><a href="<?= site_url('userNonAktif'); ?>"><i class="fa fa-user"></i><span>User Non Aktif</span></a></li>
+                        <li><a href="<?= site_url('userNonAktif'); ?>"><i class="fa fa-user"></i><span>User Non Active</span></a></li>
                     <?php endif; ?>
             </section>
         </aside>

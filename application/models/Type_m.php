@@ -25,7 +25,8 @@ class Type_m extends CI_Model
     public function add($post)
     {
         $params = [
-            'name' => $post['type_name']
+            'name' => $post['type_name'],
+            'status' => $post['type_status']
         ];
         $this->db->insert('p_type', $params);
     }
@@ -34,6 +35,7 @@ class Type_m extends CI_Model
     {
         $params = [
             'name' => $post['type_name'],
+            'status' => $post['type_status'],
             'updated ' => date('Y-m-d  H:i:s')
         ];
         $this->db->where('type_id', $post['id']);

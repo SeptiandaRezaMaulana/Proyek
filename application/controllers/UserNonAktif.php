@@ -18,35 +18,16 @@ class UserNonAktif extends CI_Controller
         $this->template->load('template', 'userNonAktif/userNonAktif_data', $data);
     }
 
-    public function edit($id)
+    public function edit()
     {
         $this->load->helper('security');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_message('required', 'The %s has not been filled');
-
-        if ($this->form_validation->run() == FALSE) {
-            echo "<script>alert('Data tidak ditemukan');";
-            echo "window.location='" . site_url('userNonAktif') . "'</script>";
-        } else {
-            $post = $this->input->post(null, TRUE);
-            $this->userNonAktif_m->edit($post);
-            if ($this->db->affected_rows() > 0) {
-                echo "<script>alert('Data Berhasil diupdate')</script>";
-            } else {
-                echo "<script>alert('Data Gagal diupdate')</script>";
-            }
-            echo "<script>window.location='" . site_url('userNonAktif') . "'</script>";
-        }
-    }
-
-    public function delete()
-    {
         $id = $this->input->post('user_id');
-        $this->user_m->del($id);
+
+        $this->userNonAktif_m->edit($id);
 
         if ($this->db->affected_rows() > 0) {
-            echo "<script>alert('Data Berhasil di Hapus')</script>";
+            $this->session->set_flashdata('success', 'User has been successfully activated!!');
         }
-        echo "<script>window.location='" . site_url('user') . "'</script>";
+        echo "<script>window.location='" . site_url('userNonAktif') . "'</script>";
     }
 }

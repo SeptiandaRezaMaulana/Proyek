@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group <?= form_error('email') ? 'has-error' : null; ?>">
                             <label for="">Email *</label>
-                            <input type="email" name="email" class="form-control" value="<?= set_value('email'); ?>">
+                            <input type="email" name="email" class="form-control" value="<?= $this->input->post('email') ?? $row->email; ?>">
                             <span class="help-block"><?= form_error('email'); ?></span>
                         </div>
                         <div class="form-group <?= form_error('password') ? 'has-error' : null; ?>">
@@ -66,8 +66,8 @@
                             <label for="">Status *</label>
                             <select name="status" class="form-control" id="">
                                 <?php $status = $this->input->post('status') ? $this->input->post('status') : $row->status ?>
-                                <option value="Y">Aktif</option>
-                                <option value="N" <?= $status == "N" ? 'selected' : null; ?>>Non Aktif</option>
+                                <option value="Y">Active</option>
+                                <option value="N" <?= $status == "N" ? 'selected' : null; ?>>Non Active</option>
                             </select>
                             <span class="help-block"><?= form_error('level'); ?></span>
                         </div>

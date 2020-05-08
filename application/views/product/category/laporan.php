@@ -42,6 +42,7 @@
                     <th>No</th>
                     <th>Category Id</th>
                     <th>Name</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@
                         <td><?= $no; ?></td>
                         <td><?= $cat->category_id; ?></td>
                         <td><?= $cat->name; ?></td>
+                        <td><?= $cat->status; ?></td>
                     </tr>
                     <?php $no++; ?>
                 <?php endforeach; ?>

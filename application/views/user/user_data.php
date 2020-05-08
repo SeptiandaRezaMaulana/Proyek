@@ -1,10 +1,10 @@
 <section class="content-header">
-    <h1>Users
+    <h1>Users Activated
         <small>Tabel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href=""><i class="fa fa-dashboard"></i></a></li>
-        <li class="active">User</li>
+        <li class="active">User Activated</li>
     </ol>
 </section>
 
@@ -28,6 +28,7 @@
                         <th>#</th>
                         <th>Username</th>
                         <th>Name</th>
+                        <th>Gender</th>
                         <th>Email</th>
                         <th>Address</th>
                         <th>Level</th>
@@ -42,10 +43,11 @@
                             <td style="width: 5%;"><?= $no++; ?>.</td>
                             <td><?= $data->username ?></td>
                             <td><?= $data->name ?></td>
+                            <td><?= $data->gender == 'L' ? 'Male' : 'Female' ?></td>
                             <td><?= $data->email ?></td>
                             <td><?= $data->address ?></td>
                             <td><?= $data->level == 1 ? "Admin" : "Kasir" ?></td>
-                            <td><?= $data->status == "Y" ? "Aktif" : "Non Aktif" ?></td>
+                            <td><?= $data->status == "Y" ? "Active" : "Non Active" ?></td>
                             <td class="text-center" width="160px">
                                 <a href="<?= site_url('user/edit/' . $data->user_id); ?>" class="btn btn-warning btn-xs">
                                     <i class="fa fa-pencil"></i> Edit</a>

@@ -8,7 +8,6 @@ class Unit_m extends CI_Model
         if ($id != null) {
             $this->db->where('unit_id', $id);
         }
-        $this->db->order_by('unit_id', 'asc');
         $query = $this->db->get();
         return $query;
     }
@@ -16,15 +15,8 @@ class Unit_m extends CI_Model
     public function add($post)
     {
         $params = [
-            'name'      => $post['unit_name'],
-            'address'   => $post['unit_address'],
-            'image'     => $post['image'],
-            'duration'  => $post['unit_duration'],
-            'groupsize' => $post['unit_grupsize'],
-            'overview'  => $post['unit_overview'],
-            'tourtype'  => $post['unit_type'],
-            'language'  => $post['unit_language'],
-            'tourcategory'  => $post['unit_categori']
+            'name'  => $post['product_name'],
+            'stock' => $post['stock']
         ];
         $this->db->insert('p_unit', $params);
     }
@@ -32,19 +24,10 @@ class Unit_m extends CI_Model
     public function edit($post)
     {
         $params = [
-            'name'      => $post['unit_name'],
-            'address'   => $post['unit_address'],
-            'duration'  => $post['unit_duration'],
-            'groupsize' => $post['unit_grupsize'],
-            'overview'  => $post['unit_overview'],
-            'tourtype'  => $post['unit_type'],
-            'language'  => $post['unit_language'],
-            'tourcategory'  => $post['unit_categori'],
-            'updated '  => date('Y-m-d  H:i:s')
+            'name'      => $post['product_name'],
+            'stock'     => $post['stock'],
+            'updated'   => date('Y-m-d  H:i:s')
         ];
-        if($post['image'] != null) {
-            $params['image'] = $post['image'];
-        }
         $this->db->where('unit_id', $post['id']);
         $this->db->update('p_unit', $params);
     }

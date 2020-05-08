@@ -1,10 +1,10 @@
 <section class="content-header">
-    <h1>User Non Aktif
+    <h1>User Non Active
         <small>Tabel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href=""><i class="fa fa-dashboard"></i></a></li>
-        <li class="active">User Non Aktif</li>
+        <li class="active">User Non Active</li>
     </ol>
 </section>
 
@@ -22,6 +22,7 @@
                         <th>Username</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Gender</th>
                         <th>Status</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -34,10 +35,14 @@
                             <td><?= $data->username ?></td>
                             <td><?= $data->name ?></td>
                             <td><?= $data->email ?></td>
-                            <td><?= $data->status == "Y" ? "Aktif" : "Non Aktif" ?></td>
+                            <td><?= $data->gender == 'L' ? 'Male' : 'Female' ?></td>
+                            <td><?= $data->status == "Y" ? "Active" : "Non Active" ?></td>
                             <td class="text-center" width="160px">
-                                <a href="<?= site_url('userNonAktif/edit/' . $data->user_id); ?>" class="btn btn-warning btn-xs">
-                                    <i class="fa fa-pencil"></i> Aktif</a>
+                                <form action="<?= site_url('userNonAktif/edit/'); ?>" method="POST" class="">
+                                    <input type="hidden" name="user_id" value="<?= $data->user_id ?>">
+                                    <button class="btn btn-warning btn-xs" onclick="return confirm('Are you sure you want to activate this user?')">
+                                        <i class="fa fa-pencil"></i> Activated</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

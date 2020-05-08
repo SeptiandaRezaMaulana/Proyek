@@ -4,36 +4,33 @@ class Item_m extends CI_Model
 {
     public function get($id = null)
     {
-        $this->db->select('p_item.*, p_category.name as category_name, p_unit.name as unit_name');
+        $this->db->select('p_item.*, p_category.name as category_name, p_type.name as type_name');
         $this->db->from('p_item');
         $this->db->join('p_category', 'p_category.category_id = p_item.category_id');
-        $this->db->join('p_unit', 'p_unit.unit_id = p_item.unit_id');
-
+        $this->db->join('p_type', 'p_type.type_id = p_item.type_id');
+        // $this->db->from('p_item');
         if ($id != null) {
             $this->db->where('item_id', $id);
         }
+        $this->db->order_by('barcode', 'asc');
         $query = $this->db->get();
         return $query;
-    }
-
-    public function dropdownList()
-    {
-        $results = $this->db->select('id, name')
-            ->where('status', 'aktif')
-            ->get('p_item')
-            ->result_array();
-
-        return array_column($results, 'name', 'id');
     }
 
     public function add($post)
     {
         $params = [
             'barcode'       => $post['barcode'],
-            'name'          => $post['product_name'],
-            'category_id'   => $post['category'],
-            'unit_id'       => $post['unit'],
-            'price'         => $post['price'],
+            'name'          => $post['item_name'],
+            'address'       => $post['item_address'],
+            'image'         => $post['image'],
+            'duration'      => $post['item_duration'],
+            'groupsize'     => $post['item_grupsize'],
+            'type_id'       => $post['type'],
+            'category_id'   => $post['category'],  
+            'language'      => $post['item_language'],
+            'overview'      => $post['item_overview'],     
+            'price'         => $post['price']
         ];
         $this->db->insert('p_item', $params);
     }
@@ -42,25 +39,35 @@ class Item_m extends CI_Model
     {
         $params = [
             'barcode'       => $post['barcode'],
-            'name'          => $post['product_name'],
-            'category_id'   => $post['category'],
-            'unit_id'       => $post['unit'],
+            'name'          => $post['item_name'],
+            'address'       => $post['item_address'],
+            'duration'      => $post['item_duration'],
+            'groupsize'     => $post['item_grupsize'],
+            'type_id'       => $post['type'],
+            'category_id'   => $post['category'],  
+            'language'      => $post['item_language'],
+            'overview'      => $post['item_overview'],     
             'price'         => $post['price'],
             'updated '      => date('Y-m-d  H:i:s')
         ];
+        if ($post['image'] != null) {
+            $params['image'] = $post['image'];
+        }
         $this->db->where('item_id', $post['id']);
         $this->db->update('p_item', $params);
     }
-    function check_barcode($code, $id = null) {
+
+    function check_barcode($code, $id = null)
+    {
         $this->db->from('p_item');
         $this->db->where('barcode', $code);
-        if($id != null) {
+        if ($id != null) {
             $this->db->where('item_id !=', $id);
         }
         $query = $this->db->get();
         return $query;
     }
-
+    
     public function del($id)
     {
         $this->db->where('item_id', $id);

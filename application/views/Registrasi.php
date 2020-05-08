@@ -32,6 +32,10 @@
                                     <input type="text" name="email" class="form-control" value="<?= set_value('email'); ?>" placeholder="Email">
                                     <span class="help-block"><?= form_error('email'); ?></span>
                                 </div>
+                                <div class="form-group <?= form_error('gender') ? 'has-error' : null; ?>">
+                                    <input type="text" name="gender" class="form-control" value="<?= set_value('gender'); ?>" placeholder="Gender">
+                                    <span class="help-block"><?= form_error('gender'); ?></span>
+                                </div>
                                 <div class="form-group <?= form_error('username') ? 'has-error' : null; ?>">
                                     <input type="text" name="username" class="form-control" value="<?= set_value('username'); ?>" placeholder="Username">
                                     <span class="help-block"><?= form_error('username'); ?></span>
@@ -71,8 +75,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </body>
 

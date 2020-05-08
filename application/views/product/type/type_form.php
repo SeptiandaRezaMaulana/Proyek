@@ -23,10 +23,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <form action="<?= site_url('type/proses'); ?>" method="POST">
-                        <div class="form-group">
+                        <div class="form-group <?= form_error('type_name') ? 'has-error' : null; ?>">
                             <label for="">Type Name *</label>
                             <input type="hidden" name="id" value="<?= $row->type_id; ?>">
                             <input type="text" name="type_name" class="form-control" value="<?= $row->name; ?>" required>
+                            <span class="help-block"><?= form_error('type_name'); ?></span>
+                        </div>
+                        <div class="form-group <?= form_error('type_status') ? 'has-error' : null; ?>">
+                            <label for="">Status *</label>
+                            <select name="type_status" class="form-control" id="" required>
+                                <option value="">- Pilih -</option>
+                                <option value="E" <?= $row->status == 'E' ? 'selected' : '' ?>>Enable</option>
+                                <option value="D" <?= $row->status == 'D' ? 'selected' : '' ?>>Disable</option>
+                            </select>
+                            <span class="help-block"><?= form_error('type_status'); ?></span>
                         </div>
                         <div class="from-group">
                             <button type="submit" name="<?= $page; ?>" class="btn btn-success"><i class="fa fa-paper-plane"></i> Save</button>
