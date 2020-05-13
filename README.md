@@ -47,3 +47,13 @@ SISTEM INFORMASI TOUR TRAVEL
 3. Fitur Upload gambar, edit / replace gambar yang lama & hapus
 4. Fitur Barcode, QR-Code & Print 
 5. Merubah Struktur tabel database
+
+(Rabu, 13 Mei 2020)
+1. Move Tour Product Unit to Item
+2. Tampilan form fitur stock in dam stock out
+3. Membuat detail data dengan popup
+4. Membuat desain form transaksi penjualan
+5. Membuat kode invoice otomatis dengan counter harian
+6. Cart item dengan CI + ajax
+7. Load tampil cart tanpa refresh
+8. Update struktur tabel database
