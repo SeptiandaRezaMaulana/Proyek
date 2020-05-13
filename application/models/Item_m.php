@@ -27,10 +27,11 @@ class Item_m extends CI_Model
             'duration'      => $post['item_duration'],
             'groupsize'     => $post['item_grupsize'],
             'type_id'       => $post['type'],
-            'category_id'   => $post['category'],  
+            'category_id'   => $post['category'],
             'language'      => $post['item_language'],
-            'overview'      => $post['item_overview'],     
-            'price'         => $post['price']
+            'overview'      => $post['item_overview'],
+            'price'         => $post['price'],
+            'stock'         => $post['stock']
         ];
         $this->db->insert('p_item', $params);
     }
@@ -44,10 +45,11 @@ class Item_m extends CI_Model
             'duration'      => $post['item_duration'],
             'groupsize'     => $post['item_grupsize'],
             'type_id'       => $post['type'],
-            'category_id'   => $post['category'],  
+            'category_id'   => $post['category'],
             'language'      => $post['item_language'],
-            'overview'      => $post['item_overview'],     
+            'overview'      => $post['item_overview'],
             'price'         => $post['price'],
+            'stock'         => $post['stock'],
             'updated '      => date('Y-m-d  H:i:s')
         ];
         if ($post['image'] != null) {
@@ -67,10 +69,26 @@ class Item_m extends CI_Model
         $query = $this->db->get();
         return $query;
     }
-    
+
     public function del($id)
     {
         $this->db->where('item_id', $id);
         $this->db->delete('p_item');
+    }
+
+    public function update_stock_in($data)
+    {
+        $qty    = $data['qty'];
+        $id     = $data['item_id'];
+        $sql    = "UPDATE p_item SET stock = stock + '$qty' WHERE item_id = '$id' ";
+        $this->db->query($sql);
+    }
+
+    public function update_stock_out($data)
+    {
+        $qty    = $data['qty'];
+        $id     = $data['item_id'];
+        $sql    = "UPDATE p_item SET stock = stock - '$qty' WHERE item_id = '$id' ";
+        $this->db->query($sql);
     }
 }
