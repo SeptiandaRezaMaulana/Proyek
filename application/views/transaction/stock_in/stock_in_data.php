@@ -18,8 +18,6 @@
             <div class="pull-right">
                 <a href="<?= site_url('stock/in/add'); ?>" class="btn btn-primary">
                     <i class="fa fa-plus"></i> Add</a>
-                <a href="<?= site_url('Stock In/laporan_pdf'); ?>" class="btn btn-primary">
-                    <i class="fa fa-print"></i> Print</a>
             </div>
         </div>
 
