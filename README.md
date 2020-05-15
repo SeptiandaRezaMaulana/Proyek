@@ -57,3 +57,15 @@ SISTEM INFORMASI TOUR TRAVEL
 6. Cart item dengan CI + ajax
 7. Load tampil cart tanpa refresh
 8. Update struktur tabel database
+
+(Jumat, 15 Mei 2020)
+1. Update jumlah qty di cart
+2. Hapus item cart tanpa refresh dengan ajax
+3. Edit item cart dengan modal popup
+4. Update cart 
+5. Hitung kalkulasi diskon, total belanja, kembalian
+6. Proses simpan transaksi
+7. Update struktur tabel database
+8. Update stock otomatis
+9. Halaman cetak struk nota invoice
+10. Cancel pembayaran dan reset form
