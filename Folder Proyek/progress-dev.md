@@ -50,3 +50,8 @@
 -Halaman cetak struk nota invoice<br>
 -Cancel pembayaran dan reset form<br>
 -Akumulasi Progress : 92% <br>
+
+### MINGGU KE 18 (6 Juni 2020) ###
+-Validasi Stock di Penjualan + Tracking Solving Error jQuery <br>
+-Membuat Laporan Penjualan <br>
+-Akumulasi Progress : 95% <br>
