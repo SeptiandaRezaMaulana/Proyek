@@ -69,3 +69,7 @@ SISTEM INFORMASI TOUR TRAVEL
 8. Update stock otomatis
 9. Halaman cetak struk nota invoice
 10. Cancel pembayaran dan reset form
+
+(Sabtu, 6 Juni 2020)
+1. Validasi Stock di Penjualan + Tracking Solving Error jQuery
+2. Membuat Laporan Penjualan
